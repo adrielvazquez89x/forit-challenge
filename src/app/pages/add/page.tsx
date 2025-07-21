@@ -1,7 +1,9 @@
-import React from 'react'
+import TaskForm from "@/app/Components/TaskForm/TaskForm";
 
 export default function Add() {
     return (
-        <div>Agregar Tarea</div>
+        <div>
+            <TaskForm />
+        </div>
     )
 }

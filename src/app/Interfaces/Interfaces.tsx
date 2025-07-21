@@ -3,11 +3,12 @@ export interface INavbarElement {
     name: string;
 }
 
-type ButtonType = 'edit' | 'delete' | 'complete';
+type ButtonType = "edit" | "delete" | "complete" | "add" | "default";
 
 export interface ButtonProps {
     type: ButtonType;
-    handler: () => void;
+    handler?: () => void;
+    label?: string; 
 }
 
 export interface ITask {

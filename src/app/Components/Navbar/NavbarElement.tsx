@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import { INavbarElement } from '@/app/Interfaces/Interfaces';
+import Link from "next/link";
+import { INavbarElement } from "@/app/Interfaces/Interfaces";
 
 export default function NavbarElement({ name, url }: INavbarElement) {
     return (

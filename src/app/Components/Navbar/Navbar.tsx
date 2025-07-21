@@ -1,5 +1,5 @@
 import NavbarElement from "./NavbarElement"
-import { INavbarElement } from '@/app/Interfaces/Interfaces';
+import { INavbarElement } from "@/app/Interfaces/Interfaces";
 
 export default function Navbar() {
 
