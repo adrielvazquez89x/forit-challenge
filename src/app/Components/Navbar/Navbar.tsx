@@ -9,7 +9,7 @@ export default function Navbar() {
             name: "Tareas"
         },
         {
-            url: "/pages/add",
+            url: "/pages/form",
             name: "Agregar nueva tarea"
         }
     ];

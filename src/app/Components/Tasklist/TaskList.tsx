@@ -1,11 +1,17 @@
 "use client";
 import { ITask } from "@/app/Interfaces/Interfaces";
 import Button from "@/app/Components/Button/Button";
+import { useState } from "react";
 
 export default function TaskList({ tasks }: { tasks: ITask[] }) {
+
+    const [taskList, setTaskList] = useState([...tasks]);
+
+    
+
     return (
         <div className="w-full max-w-md flex flex-col gap-4">
-            {tasks.map((e, idx) => (
+            {taskList.map((e, idx) => (
                 <div
                     key={idx}
                     className="bg-white rounded-xl shadow-md p-4 flex items-center justify-between transition hover:scale-[1.02] hover:shadow-lg"
@@ -24,6 +30,13 @@ export default function TaskList({ tasks }: { tasks: ITask[] }) {
                     </div>
                 </div>
             ))}
+            {
+                taskList.length === 0 && (
+                    <div className="text-center text-gray-500">
+                        No hay tareas pendientes.
+                    </div>
+                )
+            }
         </div>
     )
 }

@@ -1,13 +1,38 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../Button/Button";
 import Link from "next/link";
+import { useTasks } from "@/app/hooks/useTask";
+import { useSearchParams } from "next/navigation";
 
 
 export default function TaskForm() {
 
     const [task, setTask] = useState("");
     const [error, setError] = useState({ msg: "", status: false });
+    const { addTask } = useTasks();
+    const searchParams = useSearchParams();
+    const id = searchParams.get("id");
+
+    useEffect(() => {
+        if (id) {
+            fetch(`/api/tasks/${id}`)
+            .then(response => response.json())
+            
+        }
+    });
+
+    const handleSubmit = (e: React.FormEvent) => {
+
+        if (id) {
+            console.log("Edit task with id:", id);
+            return;
+        }
+        else {
+            handleAddTask(e);
+        }
+
+    }
 
     const handleAddTask = (e: React.FormEvent) => {
         e.preventDefault();
@@ -16,9 +41,8 @@ export default function TaskForm() {
             showError("La tarea no puede estar vacía");
             return;
         }
-
-        console.log("Task added", task);
-        setTask(""); // Reset the input field after adding the task
+        addTask(task);
+        setTask("");
     };
 
     const showError = (message: string) => {
@@ -31,7 +55,7 @@ export default function TaskForm() {
     return (
         <div className="w-full flex justify-center mt-10">
             <form
-                onSubmit={handleAddTask}
+                onSubmit={handleSubmit}
                 className="bg-white rounded-xl shadow-lg p-6 w-full max-w-md flex flex-col gap-5 border border-gray-200"
             >
                 <h2 className="text-2xl font-bold text-gray-800">Agregar Nueva Tarea</h2>
