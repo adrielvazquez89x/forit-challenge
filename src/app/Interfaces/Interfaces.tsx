@@ -15,4 +15,6 @@ export interface ITask {
     id: number;
     task: string;
     status: boolean;
+    completedAt?: Date | null;
+    createdAt?: Date | null;
 }

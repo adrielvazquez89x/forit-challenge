@@ -16,8 +16,9 @@ datasource db {
 
 
 model Task {
-  id        Int      @id @default(autoincrement())
-  task      String
-  status    Boolean  @default(false)
-  createdAt DateTime @default(now())
+  id           Int      @id @default(autoincrement())
+  task         String
+  status       Boolean  @default(false)
+  completedAt  DateTime? 
+  createdAt    DateTime @default(now())
 }
